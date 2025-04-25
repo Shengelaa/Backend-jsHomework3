@@ -51,3 +51,66 @@ function typeText(text) {
 }
 
 typeText("Hello world");
+
+//
+//
+//3) Create a function that takes a random special number like 11, 22, 33, 44 ... 99, this function randomly should log random 2 digit special number 11, 22, 33... 99 and stops when argument and random number are same.
+//Example: randomNum(22)
+///should log:
+///22 11,
+//22, 77
+//22, 22 //should stop.
+
+function randomNum(specialNumber) {
+  const randomInterval = setInterval(() => {
+    const randomNumber = Math.floor(Math.random() * 9 + 1) * 11;
+    console.log(specialNumber, randomNumber);
+
+    if (randomNumber === specialNumber) {
+      clearInterval(randomInterval);
+    }
+  }, 1000);
+}
+
+randomNum(22);
+
+//4)Create a function that imitates to return fake data, use setTimeout. make both async/await and .then.catch methods.
+
+function getPosts() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const posts = [
+        { id: 1, title: "Pirveli posti" },
+        { id: 2, title: "Meore posti" },
+        { id: 3, title: "Mesame posti" },
+      ];
+
+      resolve(posts);
+    }, 5000);
+  });
+}
+
+//then da catch methodi
+
+function fetchPostsThen() {
+  getPosts()
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => error.message);
+}
+
+fetchPostsThen();
+
+// async da await methodi
+
+async function fetchPostsAsync() {
+  try {
+    const post = await getPosts();
+    console.log(post);
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+fetchPostsAsync();
