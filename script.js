@@ -114,3 +114,25 @@ async function fetchPostsAsync() {
 }
 
 fetchPostsAsync();
+
+//5) Create a sleep function. make a function that takes a ms as an argument and when you call this function waits untill this function resolved. use setTimeout and promises.
+//eg: console.log('first')
+//await sleep(2000)
+//console.log('second')
+//second should sleep after 2 seconds
+
+const sleep = (ms) => {
+  return new Promise((res) => {
+    setTimeout(() => {
+      res();
+    }, ms);
+  });
+};
+
+async function name() {
+  console.log("first");
+  await sleep(2000);
+  console.log("second");
+}
+
+name();
